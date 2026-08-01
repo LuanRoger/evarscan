@@ -1,13 +1,14 @@
 use std::time::Instant;
 
+use clap::Parser;
+use evarscan::cli::Args;
 use evarscan::sniffer::scan_folder;
 
-const PROJECT_FOLDER: &str = "./src";
-
 fn main() {
+    let args = Args::parse();
     let start = Instant::now();
 
-    let result = scan_folder(PROJECT_FOLDER);
+    let result = scan_folder(&args.path);
 
     let execution_time = start.elapsed();
     println!("Execution time: {:?}", execution_time);
