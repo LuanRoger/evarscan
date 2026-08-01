@@ -8,4 +8,7 @@ pub struct Args {
 
     #[arg(short = 'P', long)]
     pub parallel: bool,
+
+    #[arg(short, long)]
+    pub write: bool,
 }
