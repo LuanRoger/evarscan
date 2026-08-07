@@ -3,12 +3,19 @@ name = "evarscan"
 version = "0.1.0"
 edition = "2024"
 
+[profile.release]
+debug = true
+
+[features]
+dhat-heap = []
+
 [dependencies]
 walkdir = "2.5.0"
 regex = "1.13.1"
 memory-stats = "1.2.0"
 rayon = "1.12.0"
 dashmap = "6.2.1"
-serde = { version = "1.0", features = ["derive"] }
+serde = { version = "1.0", features = ["derive", "rc"] }
 serde_json = "1.0.151"
 clap = { version = "4.6.5", features = ["derive"] }
+dhat = "0.3.3"
