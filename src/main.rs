@@ -6,7 +6,14 @@ use evarscan::file::write_result_env_metadata;
 use evarscan::patterns::RESULT_FILE;
 use evarscan::sniffer::scan_folder;
 
+#[cfg(feature = "dhat-heap")]
+#[global_allocator]
+static ALLOC: dhat::Alloc = dhat::Alloc;
+
 fn main() {
+    #[cfg(feature = "dhat-heap")]
+    let _profiler = dhat::Profiler::new_heap();
+
     let args = Args::parse();
     let start = Instant::now();
 
